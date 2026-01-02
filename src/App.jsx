@@ -119,7 +119,7 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#ffe4e9] font-serif p-4 md:p-10 relative overflow-hidden flex items-center justify-center">
+    <div className="min-h-screen bg-[#FFFAFC] font-serif p-4 md:p-10 relative overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#ff8fa3 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
 
       {/* Top Bar */}
