@@ -5,11 +5,19 @@ import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged }
 import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp, doc, setDoc } from 'firebase/firestore';
 
 // --- Firebase Configuration ---
-const firebaseConfig = JSON.parse(__firebase_config);
+const firebaseConfig = {
+  apiKey: "AIzaSyBfscanI5Kz14vo31wvtVI0odMJDI9E060",
+  authDomain: "grad-invite.firebaseapp.com",
+  projectId: "grad-invite",
+  storageBucket: "grad-invite.firebasestorage.app",
+  messagingSenderId: "629821105536",
+  appId: "1:629821105536:web:d26aa6988cfae446f58d65",
+  measurementId: "G-5WW60M4C9F"
+};
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+const appId = firebaseConfig.appId || 'default-app-id';
 
 const App = () => {
   const [popups, setPopups] = useState([]);
@@ -100,11 +108,11 @@ const App = () => {
         timestamp: serverTimestamp(),
         userId: user.uid
       });
-      showSystemMessage(`Welcome aboard, ${rsvpName}!`);
+      showSystemMessage(`Excited to see you!, ${rsvpName}!`);
       setIsRsvpModalOpen(false);
       setRsvpName('');
     } catch (err) {
-      showSystemMessage("Error saving RSVP. Try again!");
+      showSystemMessage("Error saving RSVP. Pls message Zahra!");
     } finally {
       setIsSubmitting(false);
     }
@@ -118,7 +126,6 @@ const App = () => {
       <div className="absolute top-0 left-0 w-full bg-[#ffb3c1] border-b-2 border-[#ff8fa3] px-4 py-1 flex justify-between items-center text-xs font-mono text-[#7a4b54] z-50">
         <div className="flex items-center gap-4 cursor-help" onClick={() => setShowAdmin(!showAdmin)}>
           <span className="animate-pulse">● {user ? 'SYSTEM: ONLINE' : 'SYSTEM: CONNECTING...'}</span>
-          <span className="hidden sm:inline opacity-60 text-[10px]">(Admin View)</span>
         </div>
         <div className="flex items-center gap-2">
           <Bell size={12} />
@@ -215,8 +222,8 @@ const App = () => {
 
           <div className="p-4 border-b border-[#ffccd5] bg-white text-sm">
             <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-2"><span className="text-[#ff8fa3] font-bold w-12 uppercase text-[10px] font-mono">From:</span><span className="bg-[#fff0f3] px-2 py-0.5 rounded border border-[#ffccd5] text-[11px]"><User size={12} className="inline mr-1 text-[#ff8fa3]" /> Graduating_Dev@CompSci.edu</span></div>
-              <div className="flex items-center gap-2"><span className="text-[#ff8fa3] font-bold w-12 uppercase text-[10px] font-mono">Subject:</span><span className="italic font-bold text-[#ff758f]">OMG! I did it! Let's Celebrate! 🎓✨</span></div>
+              <div className="flex items-center gap-2"><span className="text-[#ff8fa3] font-bold w-12 uppercase text-[10px] font-mono">From:</span><span className="bg-[#fff0f3] px-2 py-0.5 rounded border border-[#ffccd5] text-[11px]"><User size={12} className="inline mr-1 text-[#ff8fa3]" /> zahra.rahman@warwick.ac.uk</span></div>
+              <div className="flex items-center gap-2"><span className="text-[#ff8fa3] font-bold w-12 uppercase text-[10px] font-mono">Subject:</span><span className="italic font-bold text-[#ff758f]">I finally finished my degree! Let's Celebrate! 🎓✨</span></div>
             </div>
           </div>
 
@@ -224,11 +231,13 @@ const App = () => {
             <div className="font-mono text-[10px] text-[#ffb3c1] uppercase tracking-widest">// Initialization of party sequence...</div>
             <h1 className="text-3xl md:text-5xl font-black text-[#ff4d6d] leading-tight tracking-tighter text-center sm:text-left">Hello World!<br/>I'm Graduating!</h1>
             <div className="space-y-4 text-[#7a4b54]">
-              <p className="text-lg">After endless cups of coffee and <code className="bg-[#ffe4e9] px-1 rounded mx-1 text-[#ff4d6d] font-mono">npm install</code> disasters, I've finally earned my degree!</p>
+              <p className="text-lg">Please join me to celebrate at my house with afternoon tea, manys sweet treats and lots of fun</p>
               <div className="bg-white p-6 border-2 border-dashed border-[#ffb3c1] space-y-4 shadow-inner">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div><span className="block text-[10px] font-mono text-[#ffb3c1] uppercase">Local_Time</span><p className="font-bold text-xl">June 15th @ 7:00 PM</p></div>
-                  <div><span className="block text-[10px] font-mono text-[#ffb3c1] uppercase">Coordinates</span><p className="font-bold text-lg underline decoration-[#ffccd5]">The Binary Garden Loft</p></div>
+                <div className="grid grid-cols-2 md:grid-cols-2 gap-6">
+                  <div><span className="block text-[10px] font-mono text-[#ffb3c1] uppercase">Date</span><p className="font-bold text-xl">Saturday Jan 31st @ 2:30 PM</p></div>
+                  <div><span className="block text-[10px] font-mono text-[#ffb3c1] uppercase">Address</span><p className="font-bold text-lg underline decoration-[#ffccd5]">2 The Alders N21 1AR</p></div>
+                  <div><span className="block text-[10px] font-mono text-[#ffb3c1] uppercase">Dress</span><p className="font-bold text-lg underline decoration-[#ffccd5]">Formal/smart pls!</p></div>
+                  <div><span className="block text-[10px] font-mono text-[#ffb3c1] uppercase">Confirmation</span><p className="font-bold text-lg underline decoration-[#ffccd5]">Press the button below to confirm</p></div>
                 </div>
               </div>
             </div>
